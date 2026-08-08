@@ -19,9 +19,9 @@ SCALE_MIN = 50
 SCALE_MAX = 500
 
 # 悬浮窗窗口尺寸范围（像素）
-WIN_WIDTH_MIN = 120
+WIN_WIDTH_MIN = 60
 WIN_WIDTH_MAX = 3000
-WIN_HEIGHT_MIN = 60
+WIN_HEIGHT_MIN = 30
 WIN_HEIGHT_MAX = 2000
 
 
@@ -208,11 +208,11 @@ class SettingsWindow(QDialog):
         color_layout.setVerticalSpacing(12)
 
         color_layout.addWidget(QLabel("4. 文字颜色："), 0, 0)
-        self.btn_fg = ColorPickerButton("#FFFFFF", support_alpha=False)
+        self.btn_fg = ColorPickerButton("#FFFFFFFF", support_alpha=True)
         color_layout.addWidget(self.btn_fg, 0, 1)
 
         color_layout.addWidget(QLabel("5. 背景颜色："), 0, 2)
-        self.btn_bg = ColorPickerButton("#00000000", support_alpha=True)
+        self.btn_bg = ColorPickerButton("#00000001", support_alpha=True)
         color_layout.addWidget(self.btn_bg, 0, 3)
 
         color_layout.addWidget(QLabel("6. 边框宽度(px)："), 1, 0)
@@ -452,6 +452,16 @@ class SettingsWindow(QDialog):
             self._set_widget_error_style(self.edit_border_width, True)
         else:
             self._set_widget_error_style(self.edit_border_width, False)
+
+        # 背景颜色 Alpha 通道校验（必须 >= 1，避免透明背景）
+        bg_alpha = self.btn_bg.color().alpha()
+        if bg_alpha < 1:
+            errors.append(("background_alpha", "[背景颜色] Alpha 通道必须 >= 1"))
+            self.btn_bg.setStyleSheet(
+                "QPushButton { border: 2px solid #d93025; border-radius: 4px; background: #fff5f5; }"
+            )
+        else:
+            self.btn_bg.setStyleSheet("")
 
         # 悬浮窗宽度
         _, ok, msg = self._parse_int_in_range(self.edit_win_width.text(), WIN_WIDTH_MIN, WIN_WIDTH_MAX)

@@ -32,7 +32,7 @@ class ConfigManager:
         },
         # 颜色设置
         "foreground_color": "#FFFFFF",
-        "background_color": "#00000000",
+        "background_color": "#00000001",
         # 边框设置
         "border_width": 0,
         "border_color": "#b9b9b94a",

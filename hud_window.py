@@ -95,8 +95,8 @@ class HUDWindow(QWidget):
         self._anim_timer.start(30)
 
         # 尺寸
-        self._min_width = 120
-        self._min_height = 60
+        self._min_width = 60
+        self._min_height = 20
         self._update_size_from_config()
 
         # 位置
