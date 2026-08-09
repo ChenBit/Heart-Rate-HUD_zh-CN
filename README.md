@@ -1,8 +1,12 @@
 # 心率抬头显示
 
 一款轻量级 Windows 桌面应用，以浮动、始终置顶的覆盖层形式显示实时心率与压力指数。它可连接蓝牙低功耗（BLE）心率设备（如智能手环或胸带），并以紧凑的 HUD 窗口呈现数据，该窗口可随意拖拽至屏幕任意位置。
-## 这里只有简体中文版的应用，如果你想访问翻译成en_US的版本，请访问：
+## 这里只有简体中文版的应用，如果你想访问已翻译成en_US的版本，请访问：
+**Here is only the Simplified Chinese version of the app. If you would like to access the version translated into en_US, please visit:**
+
 <a href="https://github.com/ChenBit/Heart-Rate-HUD/" target="_blank">Heart Rate HUD English Version</a>
+
+注意：en-US区的应用版本更新会有延迟和跳过，作者是一名学生，无法及时更新请谅解~
 
 ## 功能特性
 
@@ -171,11 +175,4 @@ pip install -r requirements.txt
 
 ## 贡献
 
-如果您希望改进应用，可以：
-
-- 增加对更多 BLE 设备配置文件的支持
-- 优化压力估算逻辑
-- 改善 HUD 视觉效果和主题
-- 增加本地化或更多设置项
-
-欢迎提交拉取请求和改进建议。
+如果您希望改进应用，欢迎提交拉取请求和改进建议。
