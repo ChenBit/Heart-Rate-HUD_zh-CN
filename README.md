@@ -6,7 +6,9 @@
 
 <a href="https://github.com/ChenBit/Heart-Rate-HUD/" target="_blank">Heart Rate HUD English Version</a>
 
-注意：en-US区的应用版本更新会有延迟和跳过，作者是一名学生，无法及时更新请谅解~
+注意：en-US区的应用版本更新可能会有延迟和跳过，作者是一名学生，无法及时更新请谅解~
+
+Note: Updates for the en-US version of the project may be delayed or skipped. The author is a student and may not be able to update it in a timely manner. We appreciate your understanding.
 
 ## 功能特性
 
