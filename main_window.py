@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from PySide6.QtCore import Qt, QTimer, Signal, QSize
-from PySide6.QtGui import QAction, QIcon, QPixmap, QPainter, QColor, QBrush, QPainterPath, QFont
+from PySide6.QtGui import QAction, QIcon, QPixmap, QPainter, QColor, QBrush, QFont
 from PySide6.QtWidgets import (
     QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel,
     QListWidget, QListWidgetItem, QMessageBox, QSystemTrayIcon, QMenu,
@@ -13,6 +13,7 @@ from ble_manager import BLEManager, BLEDevice
 from stress_calculator import StressCalculator
 from hud_window import HUDWindow
 from settings_window import SettingsWindow
+from heart_path import make_heart_path
 
 
 def make_app_icon(size: int = 64) -> QIcon:
@@ -21,14 +22,9 @@ def make_app_icon(size: int = 64) -> QIcon:
     pix.fill(Qt.transparent)
     painter = QPainter(pix)
     painter.setRenderHint(QPainter.Antialiasing, True)
-    # 绘制心形
-    s = size * 0.45
-    cx, cy = size / 2, size * 0.55
-    path = QPainterPath()
-    path.moveTo(cx, cy - s * 0.4)
-    path.cubicTo(cx - s, cy - s * 1.2, cx - 2 * s, cy - s * 0.3, cx, cy + s * 0.8)
-    path.cubicTo(cx + 2 * s, cy - s * 0.3, cx + s, cy - s * 1.2, cx, cy - s * 0.4)
-    path.closeSubpath()
+    # 心形居中绘制，外接框留约 10% 边距
+    painter.translate(size / 2, size / 2)
+    path = make_heart_path(size * 0.8)
     painter.fillPath(path, QBrush(QColor("#e53935")))
     painter.end()
     return QIcon(pix)

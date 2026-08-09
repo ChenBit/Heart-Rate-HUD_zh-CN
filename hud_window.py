@@ -5,11 +5,12 @@ from PySide6.QtCore import (
 )
 from PySide6.QtGui import (
     QPainter, QColor, QFont, QFontMetrics, QMouseEvent, QPaintEvent,
-    QBrush, QPen, QPainterPath, QIcon
+    QBrush, QPen, QIcon
 )
 from PySide6.QtWidgets import QWidget, QApplication, QToolTip
 
 from config_manager import ConfigManager
+from heart_path import make_heart_path
 
 
 def parse_color(color_str: str) -> QColor:
@@ -44,16 +45,11 @@ class HeartIcon:
 
     @staticmethod
     def draw(painter: QPainter, x: float, y: float, size: float, color: QColor, scale: float = 1.0):
-        """绘制心形 (x,y 为中心坐标)"""
+        """绘制心形 (x,y 为中心坐标，size 为外接框长边)"""
         painter.save()
         painter.translate(x, y)
         painter.scale(scale, scale)
-        s = size
-        path = QPainterPath()
-        path.moveTo(0, s * 0.3)
-        path.cubicTo(-s * 0.5, -s * 0.3, -s, s * 0.1, 0, s)
-        path.cubicTo(s, s * 0.1, s * 0.5, -s * 0.3, 0, s * 0.3)
-        path.closeSubpath()
+        path = make_heart_path(size)
         painter.setRenderHint(QPainter.Antialiasing, True)
         painter.fillPath(path, QBrush(color))
         painter.restore()
@@ -260,7 +256,7 @@ class HUDWindow(QWidget):
                 hb_scale = self._heartbeat_scale()
                 # 图标颜色
                 HeartIcon.draw(painter, x + icon_size / 2, y_center,
-                               icon_size * 0.5, fg_color, hb_scale)
+                               icon_size, fg_color, hb_scale)
                 x += icon_size
             elif kind == "text":
                 tw, th, text = rest
