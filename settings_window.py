@@ -19,10 +19,10 @@ SCALE_MIN = 50
 SCALE_MAX = 500
 
 # 悬浮窗窗口尺寸范围（像素）
-WIN_WIDTH_MIN = 60
-WIN_WIDTH_MAX = 3000
-WIN_HEIGHT_MIN = 30
-WIN_HEIGHT_MAX = 2000
+WIN_WIDTH_MIN = 20
+WIN_WIDTH_MAX = 7680
+WIN_HEIGHT_MIN = 10
+WIN_HEIGHT_MAX = 4320
 
 
 def _color_to_hex_with_alpha(color: QColor) -> str:
@@ -210,10 +210,14 @@ class SettingsWindow(QDialog):
         color_layout.addWidget(QLabel("4. 文字颜色："), 0, 0)
         self.btn_fg = ColorPickerButton("#FFFFFFFF", support_alpha=True)
         color_layout.addWidget(self.btn_fg, 0, 1)
+        self.btn_fg.setMinimumWidth(100)
+        self.btn_fg.setMinimumHeight(24)
 
         color_layout.addWidget(QLabel("5. 背景颜色："), 0, 2)
         self.btn_bg = ColorPickerButton("#00000001", support_alpha=True)
         color_layout.addWidget(self.btn_bg, 0, 3)
+        self.btn_bg.setMinimumWidth(100)
+        self.btn_bg.setMinimumHeight(24)
 
         color_layout.addWidget(QLabel("6. 边框宽度(px)："), 1, 0)
         self.edit_border_width = QLineEdit()
@@ -223,6 +227,8 @@ class SettingsWindow(QDialog):
         color_layout.addWidget(QLabel("7. 边框颜色："), 1, 2)
         self.btn_border = ColorPickerButton("#b9b9b94a", support_alpha=True)
         color_layout.addWidget(self.btn_border, 1, 3)
+        self.btn_border.setMinimumWidth(100)
+        self.btn_border.setMinimumHeight(24)
 
         self.lbl_color_error = QLabel("")
         self.lbl_color_error.setStyleSheet("color: #d93025; font-size: 11px;")
