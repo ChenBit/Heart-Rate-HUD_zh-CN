@@ -51,30 +51,15 @@ Note: Updates for the en-US version of the project may be delayed or skipped. Th
 ## 安装步骤
 
 1. 克隆或下载本项目。
-2. 在项目文件夹中打开终端。
-3. 安装依赖：
-
-```bash
-pip install -r requirements.txt
-```
-
-4. 确保蓝牙适配器已启用，且目标心率设备处于配对/发现模式。
+2. 确保蓝牙适配器已启用，且目标心率设备处于配对/发现模式。
 
 ## 运行应用
 
-### 方式一：通过 Python 启动
-
-```bash
-python main.py
-```
-
-### 方式二：在 Windows 上双击启动器
+### 在 Windows 上双击启动器
 
 ```text
-run.pyw
+C2R.bat
 ```
-
-该启动器会在 Windows 上隐藏控制台窗口，以后台模式启动应用。
 
 ## 使用方法
 
